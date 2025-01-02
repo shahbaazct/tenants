@@ -112,7 +112,7 @@ class ItemView(APIView):
                         if value and not isinstance(value, list)
                     }
                     return Response(
-                        {"code": 204, "detail": cleaned_data},         
+                        {"code": 204, "detail": cleaned_data},
                         status=status.HTTP_204_NO_CONTENT,
                     )
 
