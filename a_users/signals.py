@@ -4,6 +4,7 @@ from allauth.account.models import EmailAddress
 from django.contrib.auth.models import User
 from .models import Profile
 
+
 @receiver(post_save, sender=User)
 def user_postsave(sender, instance, created, **kwargs):
     user = instance
@@ -11,7 +12,7 @@ def user_postsave(sender, instance, created, **kwargs):
     # add profile if user is created
     if created:
         Profile.objects.create(
-            user = user,
+            user=user,
         )
     else:
         # update allauth emailaddress if exists
@@ -24,10 +25,7 @@ def user_postsave(sender, instance, created, **kwargs):
         except:
             # if allauth emailaddress doesn't exist create one
             EmailAddress.objects.create(
-                user = user,
-                email = user.email,
-                primary = True,
-                verified = False
+                user=user, email=user.email, primary=True, verified=False
             )
 
 

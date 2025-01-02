@@ -24,12 +24,12 @@ from a_home.views import *
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('admin_tenants/', tenant_admin_site.urls),
-    path('accounts/', include('allauth.urls')),
-    path('', include('a_home.urls')),
-    path('profile/', include('a_users.urls')),
-    path('@<username>/', profile_view, name="profile"),
+    path("admin/", admin.site.urls),
+    path("admin_tenants/", tenant_admin_site.urls),
+    path("accounts/", include("allauth.urls")),
+    path("", include("a_home.urls")),
+    path("profile/", include("a_users.urls")),
+    path("@<username>/", profile_view, name="profile"),
     path("items/api/", include("a_home.urls")),
     # API routes for tenants app
     path("tenants/api/", include("a_tenant_manager.urls")),

@@ -2,6 +2,7 @@ from django.utils.deprecation import MiddlewareMixin
 from django_tenants.utils import tenant_context
 from a_tenant_manager.models import Tenant
 
+
 class TenantSpecificMiddleware(MiddlewareMixin):
     """
     Middleware for handling tenant context based on the request headers or URL.
@@ -28,8 +29,6 @@ class TenantSpecificMiddleware(MiddlewareMixin):
             tenant_context: The tenant context for the current request.
         """
         host = request.get_host()
-        schema_name = host.split(".")[
-            0
-        ]
+        schema_name = host.split(".")[0]
 
         request.tenant_schema = schema_name
